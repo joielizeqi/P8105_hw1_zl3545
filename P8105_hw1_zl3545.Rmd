@@ -1,0 +1,18 @@
+---
+title: "P8105_hw1_zl3545"
+author: "Zeqi Li"
+output: github_document
+date: "2024-09-19"
+---
+
+# HW 1
+## Problem 1
+
+Load data set.
+```{r load_data}
+data("penguins",
+     package = "palmerpenguins")
+```
+
+The "penguins" data set contains a tibble data frame with the following
+variables that describe the penguins: `r colnames(penguins)`.
