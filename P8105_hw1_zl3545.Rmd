@@ -16,3 +16,9 @@ data("penguins",
 
 The "penguins" data set contains a tibble data frame with the following
 variables that describe the penguins: `r colnames(penguins)`.
+
+The tibble data frame contains `r nrow(penguins)` rows and `r ncol(penguins)`
+columns of data.
+
+The mean flipper length for these penguins is 
+`r mean(penguins$flipper_length_mm, na.rm = TRUE)` mm.
