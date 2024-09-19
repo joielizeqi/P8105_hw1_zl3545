@@ -4,11 +4,13 @@ author: "Zeqi Li"
 output: github_document
 date: "2024-09-19"
 ---
+```{r setup, include = FALSE}
+library(tidyverse)
+```
 
-# HW 1
-## Problem 1
+# Problem 1
 
-Load data set.
+## Load data set
 ```{r load_data}
 data("penguins",
      package = "palmerpenguins")
@@ -21,4 +23,13 @@ The tibble data frame contains `r nrow(penguins)` rows and `r ncol(penguins)`
 columns of data.
 
 The mean flipper length for these penguins is 
-`r mean(penguins$flipper_length_mm, na.rm = TRUE)` mm.
+`r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
+
+## Plot data
+```{r plot_data, message = FALSE}
+ggplot(penguins, aes(x = bill_length_mm,
+                     y = flipper_length_mm,
+                     color = species)) + geom_point()
+ggsave(filename = "flipper_length_vs_bill_length_scatterplot.png")
+```
+
