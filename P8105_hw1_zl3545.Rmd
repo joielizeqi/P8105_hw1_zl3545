@@ -26,10 +26,43 @@ The mean flipper length for these penguins is
 `r mean(pull(penguins, flipper_length_mm), na.rm = TRUE)` mm.
 
 ## Plot data
-```{r plot_data, message = FALSE}
+```{r plot_data, warning = FALSE}
 ggplot(penguins, aes(x = bill_length_mm,
                      y = flipper_length_mm,
                      color = species)) + geom_point()
+```
+
+## Save the above scatterplot
+```{r save_plot, warning = FALSE, message = FALSE}
 ggsave(filename = "flipper_length_vs_bill_length_scatterplot.png")
+```
+
+# Problem 2
+
+## Create a data frame
+```{r make_df}
+df = tibble(sample = rnorm(10),
+            pos = sample > 0,
+            chr = c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'),
+            fct = factor(c("L1", "L1", "L1", "L2", "L2", "L2", "L2", "L3", "L3", "L3")))
+df
+```
+
+## Taking the mean of each variable
+```{r avg, collapse = TRUE}
+sample_mean = mean(pull(df, sample))
+pos_mean = mean(pull(df, pos))
+chr_mean = mean(pull(df, chr))
+fct_mean = mean(pull(df, fct))
+```
+The mean of the `sample` variable in this data frame is `r sample_mean`. 
+The mean of the `pos` variable in this data frame is `r pos_mean`. We cannot 
+take the mean of the `chr` and the `fct` variables because of their data types.
+
+## Converting data types
+```{r convert, results = 'hide', warning = FALSE}
+as.numeric(pull(df, pos))
+as.numeric(pull(df, chr))
+as.numeric(pull(df, fct))
 ```
 
