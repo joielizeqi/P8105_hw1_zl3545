@@ -65,4 +65,20 @@ as.numeric(pull(df, pos))
 as.numeric(pull(df, chr))
 as.numeric(pull(df, fct))
 ```
+When we tried to convert the data type of `pos`, `chr`, and `fct` into numerical 
+types, only `pos` (a logical variable) and `fct` (a factor variable) were 
+successfully converted. 
 
+Logical variables can be converted into numerics based on the rules that 
+`TRUE == 1` and `FALSE == 0`, so the numerics `0` and `1` were coerced to `pos` 
+when we applied `mean()` and `as.numeric()`.
+
+Factor variables are stored as integers internally, but they typically represent 
+categorical data instead of having numerical meanings. When we applied 
+`as.numeric()` to `fct`, the internal integers were coerced to `fct`. But 
+applying `mean()` on `fct` generated `NA` because R does not automatically 
+coerce numerics onto factor variables.
+
+Applying `mean()` and `as.numeric()` on the `chr` variable generated `NA` 
+because character variables do not have numerical meanings in R and R cannot 
+coerce numerics onto character variables.
