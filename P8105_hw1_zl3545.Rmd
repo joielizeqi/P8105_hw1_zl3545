@@ -2,7 +2,7 @@
 title: "P8105_hw1_zl3545"
 author: "Zeqi Li"
 output: github_document
-date: "2024-09-19"
+date: "2024-09-20"
 ---
 ```{r setup, include = FALSE}
 library(tidyverse)
@@ -40,6 +40,16 @@ ggsave(filename = "flipper_length_vs_bill_length_scatterplot.png")
 # Problem 2
 
 ## Create a data frame
+Create a data frame with the following variables:
+
+* `sample`: a random sample of size 10 from a standard Normal distribution.
+
+* `pos`: a logical vector indicating whether elements of the sample are greater 
+than 0.
+
+* `chr`: a character vector of length 10.
+
+* `fct`: a factor vector of length 10, with 3 different factor “levels”.
 ```{r make_df}
 df = tibble(sample = rnorm(10),
             pos = sample > 0,
